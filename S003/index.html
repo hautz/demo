@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;'>
+<title>S003</title>
+<style>
+/* CSS Document */
+body, p, h1, h2 { padding: 0; margin: 0; font-family: "Arial","微軟正黑體","Microsoft JhengHei"; font-weight: 500;}
+ul, li{padding: 0; margin: 0; list-style: none;}
+h1{font-size: 46px; color: #41494c; font-weight: bold; margin-bottom: 30px; padding-bottom: 14px; position: relative;}
+h1::after{position: absolute; content: ""; left: 50%; bottom: 0; margin-left: -18px; width: 36px; height: 6px; background-color: #1295b6; border-radius: 3px;}
+
+
+/*fonts*/
+@font-face {
+  font-family: "3MCircularTT-Regular";
+  src: url(fonts/3MCircularTT-Regular.ttf);
+}
+@font-face {
+  font-family: "3MCircularTT-Bold";
+  src: url(fonts/3MCircularTT-Bold.ttf);
+}
+
+.wrap { max-width: 960px; display: block; margin: 0 auto; }
+.pc-show{ display: block; }
+.m-show{ display: none; }
+.font{ font-family: "3MCircularTT-Regular","3MCircularTT-Bold"; }
+
+/*kv*/
+.kv { padding: 0px; }
+.kv img { width:100%; display: block; }
+
+/*concent*/
+.box_01 img, .box_02 img, .box_03 img, .box_04 img, .box_04 .pic img, .box_05 img, .box_06 img, .box_07 img, .box_08 img
+, .box_09 img, .box_10 img{ max-width:100%; display: block; height: auto;
+image-rendering: -moz-crisp-edges; /*Firefox*/
+image-rendering: -o-crisp-edges; /*Opera*/
+image-rendering: -webkit-optimize-contrast; /*Webkit*/
+image-rendering: crisp-edges;
+-ms-interpolation-mode: nearest-neighbor; /*IE*/
+}
+.box_01{ width: 100%; background: url(images/bg_01.jpg) center top no-repeat #bed9d7; padding: 100px 50px 30px; text-align: center; box-sizing: border-box;}
+.box_01 ul{display: flex;}
+.box_01 ul li{ flex: 1; margin: 0 5px;}
+.box_01 ul li figure{margin: 0 15px;}
+.box_01 ul li p{ font-size: 20px; color: #393939; margin-top: 20px; }
+
+.box_02{ width: 100%; background: url(images/bg_02.jpg) center top no-repeat; position: relative; text-align: center; padding: 140px 50px 70px; box-sizing: border-box;}
+.box_02 ul{ margin-top: 40px; display: flex; }
+.box_02 ul li{ flex: 1; border-radius: 15px; position: relative; margin: 0 10px; }
+.box_02 .number{ width: 32px; height: 32px; background:#404040; border-radius: 50%; text-align: center; color: #fff; font-weight: bold; position: absolute; top: -10px; left: 50%; margin-left: -16px; line-height: 32px;}
+.box_02 .pic{ margin-top: -1px; }
+.box_02 .p-content{ padding: 20px 15px; height: 166px; background-color: #fff; border-bottom-left-radius: inherit; border-bottom-right-radius: inherit; box-sizing: border-box;}
+.p-content .p-title{ font-size: 20px; background:#38748b; border-radius: 20px; width: 100%; color: #fff; padding: 5px 0;
+margin-bottom: 10px;}
+.p-content p{ color: #393939; line-height: 26px;}
+
+.box_03{ width: 100%; height: 688px; background: url(images/bg_03.jpg) center top no-repeat; position: relative; padding: 80px 50px 0; box-sizing: border-box;}
+.box_03 h1{ margin-left: auto; width: 450px; text-align: center;}
+.box_03 ul{ margin-left: auto; width: 450px;}
+.box_03 ul li{ text-align: left; min-height: 80px; }
+.box_03 .boiled-title{ font-size: 20px; font-weight: bold; padding-left: 26px; }
+.box_03 .boiled-1{ padding-left: 90px; background: url(images/bg_boiled1.png) left top no-repeat; }
+.box_03 .boiled-2{ margin-top: 30px; padding-left: 90px; background: url(images/bg_boiled2.png) left top no-repeat; }
+.box_03 .boiled-1 .boiled-title, .box_03 .boiled-2 .boiled-title{ margin-bottom: 4px; color: #aa7745; background: url(images/icon_cross.png) left 5px no-repeat; }
+.box_03 .boiled-3{ position: relative; margin-top: 50px; padding-left: 30px; }
+.box_03 .boiled-3::after{content: ""; position: absolute; top: 22px; left: 86px; width: 24px; height: 24px; background-image: url(images/icon_crown.png); background-size: 100%;}
+.box_03 .boiled-3 figure{ position: absolute; top: -20px; left: 10px; bottom: -20px; margin: 0; }
+.box_03 .boiled-3 figure img{height: 100%;}
+.box_03 .boiled-3 .content{ padding: 20px 20px 20px 60px; background-color: #38748b; border-top-right-radius: 10px; border-bottom-right-radius: 10px; clip-path: polygon(0 0, 100% 0%, 100% 100%, 25px 100%);}
+.box_03 .boiled-3 .boiled-title{ margin-bottom: 10px; color: #f1c93e; }
+.box_03 .boiled-3 p{ color: #fff; }
+.box_03 .boiled-note{ text-align: right; margin-top: 20px; }
+.box_03 .boiled-note span{ font-weight: bold; color: #0a7187; }
+
+.box_04{ width: 100%; background: #91c2cc; position: relative; padding: 100px 50px 40px; box-sizing: border-box;}
+.box_04 h1::after{ left: 0; margin-left: 0; background-color: #f1c93e;}
+.box_04 .content{ padding-right: 220px; padding-left: 40px; }
+.box_04 .content p{ color: #393939; font-size: 18px; line-height: 28px; margin-bottom: 30px; }
+.box_04 .content_img{ display: flex; justify-content: space-between; }
+.box_04 .content_img div + div { margin-left: 10px; }
+.box_04 .pic{ position: absolute; right: 70px; top: 80px;}
+.box_04 .name{ background: #38748b; border-radius: 2em; padding: 8px 0;color: #fff; font-size: 24px; font-weight: bold; width: 200px; 
+text-align: center; margin: 50px auto 0; position: relative; }
+.box_04 ul { display: flex; background: #fff; border-radius: 20px; padding: 50px 20px 20px; margin-top: -30px; }
+.box_04 ul li{ flex: 1; margin: 0 5px; }
+.box_04 ul li figure{ margin: 0 5px; }
+.box_04 ul li p{ color: #3B393B; font-weight: normal; margin-top: 10px; text-align: center; }
+
+.box_05{ width: 100%; padding: 140px 50px 100px; text-align: center; color: #fff; box-sizing: border-box; background: url(images/bg_05.jpg) center top no-repeat;}
+.box_05 h1{color: #fff;}
+.box_05 h1::after{ background-color: #f1c93e;}
+.box_05 .txt{ letter-spacing: 1px; width: 640px; margin: 0 auto 60px; font-size: 20px; }
+.box_05 .name{ background: #38748b; border-radius: 2em; padding: 10px 30px;color: #fff; font-size: 20px; display: inline-block;
+margin: 0 auto 20px; position: relative; }
+.box_05 .name span{ font-weight: bold; }
+.box_05 ul.compare{ display: flex;}
+.box_05 ul.compare > li { width: 50%; display: flex;}
+.box_05 .compare-1{ flex-direction: row-reverse;}
+.box_05 .pic{ display: flex; align-items: flex-end; justify-content: center;}
+.box_05 .pic img{max-width: 140px; width: 100%;}
+.box_05 .content{flex: 1; display: flex; flex-direction: column; justify-content: flex-end;}
+.box_05 .compare-1 .content{ padding-bottom: 30px;}
+.box_05 .title{font-weight: bold; height: 70px;}
+.box_05 .compare-1 .title{font-size: 36px;}
+.box_05 .compare-2 .title{font-size: 24px;}
+.box_05 ul.info{ position: relative; width: 170px; margin: 0 auto; border: 1px solid rgba(255,255,255,.3); border-radius: 10px; background-image: linear-gradient(rgba(0,31,37,.1), rgba(0,31,37,.3));}
+.box_05 ul.info > li:not(.win){padding: 20px 0;}
+.box_05 ul.info > li + li:not(.win){border-top: 1px solid rgba(255,255,255,.3);}
+.box_05 ul.info .price span{color: #f1c93e; font-weight: bold;}
+.box_05 ul.info > li:first-child .price span{font-size: 30px;}
+.box_05 .compare-1 ul.info > li:nth-child(2) .price span{font-size: 48px;}
+.box_05 .compare-2 ul.info > li:nth-child(2) .price span{font-size: 36px;}
+.box_05 .win{ width: 58px; position: absolute; right: -20px; bottom: -20px; }
+.box_05 .note{ color: #393939; margin-top: 10px; }
+
+.box_06{ width: 100%; color: #fff; text-align: center; background-image: linear-gradient(#4299ab, #3f94a6); position: relative; padding: 50px; box-sizing: border-box;}
+.box_06 h1{color: #fff;}
+.box_06 h1::after{ background-color: #f1c93e;}
+.box_06 .txt{ letter-spacing: 1px;font-size: 20px; }
+.box_06 ul{display: flex; width: 90%; margin: 50px auto 0;}
+.box_06 ul li{padding: 0 20px;}
+
+.box_07{ width: 100%; color: #fff; text-align: center; background: url(images/bg_07.jpg) center top no-repeat #3f94a6; position: relative; padding: 80px 50px; box-sizing: border-box;}
+.box_07 h1{color: #fff;}
+.box_07 h1::after{ background-color: #f1c93e;}
+.box_07 .txt{ letter-spacing: 1px;font-size: 20px; width: 400px; margin: 0 auto; }
+.box_07 .txt span{color: #ffd236; font-weight: bold;}
+.box_07 ul{display: flex; width: calc(90% - 40px); margin: 50px auto 0;}
+.box_07 ul li{position: relative;}
+.box_07 ul li:first-child{border-top-left-radius: 20px; border-bottom-left-radius: 20px;}
+.box_07 ul li:last-child{border-top-right-radius: 20px; border-bottom-right-radius: 20px; margin-left: 2px;}
+.box_07 ul li img{border-radius: inherit;}
+.box_07 ul li p{position: absolute; width: 200px; left: 50%; bottom: 30px; font-size: 20px; color: #393939; margin-left: -100px;}
+
+.box_08{ width: 100%; background: #91c2cc; position: relative; padding: 80px 50px; box-sizing: border-box; text-align: center;}
+.box_08 h1::after{ background-color: #f1c93e;}
+.box_08 ul{display: flex;}
+.box_08 ul li{ margin: 0 10px;}
+.box_08 ul li p{ color: #393939; font-size: 24px; margin-top: 20px; font-weight: normal; letter-spacing: 3px; }
+
+.box_09{ width: 100%; height: 370px; background: url(images/bg_pro.jpg) center no-repeat; padding: 100px 70px 0; box-sizing: border-box;
+position: relative;}
+.box_09 .txt{ font-size: 40px; color: #38748b; float: right; width: 47%;}
+.box_09 .txt .title{ border-bottom: 1px #38748b solid; padding-bottom: 10px; margin-bottom: 30px; font-weight: bold; }
+.box_09 .txt span{ font-size: 22px; font-weight: normal; display: block; }
+.box_09 .txt p{ font-size: 15px; line-height: 1.7; color: #38748b; font-weight: normal; }
+.box_09 .over{ width: 105px; position: absolute; top: -30px; right: 70px; }
+
+.box_10{ width: 100%; background:#bed9d7; position: relative; padding: 80px 50px 60px; box-sizing: border-box;}
+.box_10 h1::after{ left: 0; margin-left: 0;}
+.box_10 .content{display: flex; justify-content: space-between;}
+.box_10 h1 + .content{margin-top: -20px;}
+.box_10 .pd{ width: 40%; display: flex; justify-content: center; align-items: center;}
+.box_10 .list{ width: 55%; }
+.box_10 .list li { display: flex; padding: 16px 10px; border-bottom: 1px solid rgba(0,0,0,.2);}
+.box_10 .list .title{width: 120px; flex: 0 0 auto; color: #38748b; display: flex; align-items: center;}
+.box_10 .name{ background: #38748b; border-radius: 2em; padding: 8px 0; text-align: center; color: #fff; font-weight: bold; font-size: 24px; width: 230px;
+margin: 90px auto 40px; position: relative; }
+
+/*小於960的顯示*/
+@media (max-width:959px) {
+.box_01{background-size: contain;}
+.box_07 ul li p{bottom: 20px;}
+.box_09{padding-right: 50px;}
+.box_09 .txt{width: 55%;}
+.box_10 .list .title{width: 100px;}
+}
+
+@media (max-width:767px) {
+.pc-show{ display: none; }
+.m-show{ display: block; }
+h1{ font-size: 36px; margin-bottom: 20px; }
+.box_01{background-image: url(images/bg_01_m.jpg); padding: 120px 30px 0;}
+.box_01 ul{flex-wrap: wrap; justify-content: center;}
+.box_01 ul li{width: 50%; flex: 0 0 auto; margin: 0 0 20px;}
+.box_01 ul li:last-child{margin-bottom: 0;}
+.box_01 ul li figure{ width: 80%; max-width: 160px; margin: 0 auto;}
+.box_01 ul li p{margin-top: 10px;}
+
+.box_02{background-image: url(images/bg_02_m.jpg); background-size: cover; padding: 140px 30px 0;}
+.box_02 ul{flex-wrap: wrap; justify-content: center;}
+.box_02 ul li{width: 50%; flex: 0 0 auto; margin: 0; padding: 0 20px 40px; box-sizing: border-box;}
+
+.box_03{ padding-right: 30px;}
+
+.box_04{ padding: 80px 30px 20px;}
+.box_04 .pic{ top: 60px;}
+.box_04 ul{flex-wrap: wrap; justify-content: center; padding-bottom: 0;}
+.box_04 ul li{width: calc(100% / 3); flex: 0 0 auto; margin: 0; padding: 0 20px 40px; box-sizing: border-box;}
+.box_04 ul li figure{ margin: 0 auto; width: 80%; max-width: 130px; }
+
+.box_05{padding: 100px 30px 60px;}
+.box_05{ background-image: url(images/bg_05_m.jpg); background-color: #4299ab; background-size: contain;}
+.box_05 .txt{width: auto; margin-bottom: 40px;}
+.box_05 ul.compare{ display: flex; flex-direction: column; align-items: center;}
+.box_05 ul.compare > li { width: 80%;}
+.box_05 .pic{flex: 1;}
+.box_05 .title{height: auto; margin-bottom: 10px;}
+
+.box_06 ul{flex-direction: column; align-items: center; width: 80%;}
+.box_06 ul li{padding: 0;}
+.box_06 ul li + li{margin-top: 30px;}
+
+.box_07{background-image: url(images/bg_07_m.jpg); background-size: cover;}
+.box_07 .txt{ width: auto;}
+.box_07 ul{flex-direction: column; align-items: center; width: 80%;}
+.box_07 ul li{border-radius: 20px;}
+.box_07 ul li + li{margin-top: 30px;}
+
+.box_08{padding: 80px 20px;}
+.box_08 ul{flex-wrap: wrap; justify-content: center;}
+.box_08 ul li{width: 50%; flex: 0 0 auto; margin: 0; padding: 20px 15px 0; box-sizing: border-box;}
+.box_08 ul li p{margin-top: 10px;}
+
+.box_09{ padding: 90px 30px 440px; height: auto; background: url(images/bg_pro_m.png) left bottom no-repeat #f0f0f0; background-size: 500px 424px;}
+.box_09 .txt{ float: none; width: 100%; text-align: center;}
+
+.box_10{padding: 80px 30px;}
+.box_10 .content{flex-direction: column;}
+.box_10 .pd{ width: 100%;}
+.box_10 .list{ width: 100%; margin-top: 30px; }
+}
+
+@media (max-width:600px) {
+h1{ font-size: 30px; letter-spacing: 1px; }
+
+.box_02 ul li{padding: 0 10px 30px;}
+
+.box_03{ background-image: url(images/bg_03_m.jpg); background-position: left bottom; background-size: cover; font-size: 14px;}
+.box_03 h1{width: 280px;}
+.box_03 ul{width: 280px;}
+.box_03 .boiled-title{ font-size: 18px;}
+.box_03 .boiled-1, .box_03 .boiled-2{ padding-left: 65px; background-size: 49px 56px;}
+.box_03 .boiled-3::after{top: -10px; left: 55px;}
+.box_03 .boiled-3 .boiled-title{ padding-left: 0; margin-bottom: 4px;}
+.box_03 .boiled-3 figure{left: 0; top: -15px; bottom: -15px;}
+.box_03 .boiled-3 .content{padding: 15px 10px 15px 35px;}
+
+.box_04 .content{ padding-right: 0; padding-left: 20px; }
+.box_04 .content h1, .box_04 .content p{ padding-right: 120px;}
+.box_04 .content p{margin-bottom: 40px;}
+.box_04 .pic{width: 100px; right: 40px;}
+.box_04 ul li{padding: 0 10px 20px;}
+
+.box_05 ul.compare > li { width: 100%;}
+
+.box_09 .txt .title{ font-size: 30px;}
+.box_09 .txt span{ font-size: 20px;}
+}
+
+@media (max-width:480px) {
+h1{ font-size: 26px; }
+.box_01{padding: 80px 20px 0;}
+.box_01 ul li figure{ width: 80px;}
+.box_01 ul li p{ font-size: 16px;}
+
+.box_02{padding: 100px 20px 0;}
+.box_02 ul li{padding: 0; margin-bottom: 20px; width: 47%;}
+.box_02 ul li:nth-child(even){margin-left: 6%;}
+.box_02 .p-content{padding: 15px 10px; height: 140px;}
+.p-content .p-title{font-size: 16px;}
+.p-content p{font-size: 12px; line-height: 20px;}
+
+.box_03{padding-right: 20px; background-position: -35px  bottom;}
+.box_03 h1{width: 200px;}
+.box_03 ul{width: 200px;}
+.box_03 ul li p{font-size: 12px;}
+.box_03 .boiled-title{ font-size: 14px;}
+.box_03 .boiled-1, .box_03 .boiled-2{ padding-left: 50px; background-size: 42px 48px;}
+.box_03 .boiled-1 .boiled-title, .box_03 .boiled-2 .boiled-title{background-size: 10px 10px; padding-left: 15px;}
+
+.box_04{padding: 60px 20px 20px;}
+.box_04 .content{padding-left: 0;}
+.box_04 .content h1, .box_04 .content p{ padding-right: 100px;}
+.box_04 .content p{font-size: 14px; line-height: 1.5;}
+.box_04 .pic{width: 80px; right: 30px;}
+.box_04 .name{font-size: 16px; width: 120px; margin-top: 30px; }
+.box_04 ul{margin-top: -20px; padding-top: 40px;}
+.box_04 ul li p{font-size: 14px;}
+
+.box_05{padding: 80px 20px 60px;}
+.box_05 .txt{font-size: 14px;}
+.box_05 .name{font-size: 16px;}
+.box_05 .compare-1 .title{font-size: 30px;}
+.box_05 .compare-2 .title{font-size: 18px;}
+.box_05 ul.info{width: 150px;}
+
+.box_06{padding: 30px 20px;}
+.box_06 .txt{font-size: 14px;}
+.box_06 ul{margin-top: 30px; width: 70%;}
+
+.box_07{padding: 40px 20px;}
+.box_07 .txt{font-size: 14px;}
+.box_07 ul{margin-top: 30px; width: 70%;}
+.box_07 ul li p{font-size: 16px; width: 160px; margin-left: -80px;}
+
+.box_08{padding: 60px 20px;}
+.box_08 ul li p{font-size: 16px;}
+
+.box_09{ padding-bottom: 330px; background-size: 375px 318px;}
+.box_09 .txt .title{ margin-bottom: 20px; font-size: 26px;}
+.box_09 .txt span{ font-size: 18px;}
+.box_09 .txt p{font-size: 14px;}
+
+.box_10{padding: 60px 20px;}
+.box_10 .pd img{width: 150px;}
+.box_10 .list{font-size: 14px;}
+.box_10 .list li{padding: 12px 8px;}
+.box_10 .name{ margin: 40px auto 30px; font-size: 16px; width: 160px;}
+}
+</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<!--KV banner -->
+		<div class="kv"> 
+			<div class="pc-show"><img src="images/kv_960.jpg" alt="3M" /></div>
+			<div class="m-show"><img src="images/kv_m.jpg" alt="3M" /></div>
+		</div>
+
+		<!--生飲濾淨-->     
+		<div class="box_01">
+		  	<h1 class="pc-show">生飲濾淨，租屋淨水好幫手！</h1>
+		  	<h1 class="m-show">生飲濾淨，<br />租屋淨水好幫手！</h1>
+		    <ul>
+			    <li>
+			    	<figure><img src="images/icon01.png" alt="高效過濾技術" /></figure>
+			    	<p>高效過濾技術</p>
+				</li>
+				<li>
+			    	<figure><img src="images/icon02.png" alt="長效即淨型" /></figure>
+			    	<p>長效即淨型</p>
+				</li>
+				<li>
+			    	<figure><img src="images/icon03.png" alt="簡易更換濾心" /></figure>
+			    	<p>簡易更換濾心</p>
+				</li>
+				<li>
+			    	<figure><img src="images/icon04.png" alt="小體積省空間" /></figure>
+			    	<p>小體積省空間</p>
+				</li>
+				<li>
+			    	<figure><img src="images/icon05.png" alt="免插電無廢水" /></figure>
+			    	<p>免插電無廢水</p>
+				</li>
+			</ul>
+		</div>
+
+		<!--居家用水疑慮-->
+		<div class="box_02">
+		    <h1><span>居家用水疑慮</span></h1>
+		    <div><img src="images/img_01.png" alt="污染物質" /></div>
+		    <ul>
+		    	<li>
+		    		<div class="number">1</div>
+		    		<div class="pic"><img src="images/img_02.png" alt="水源污染" /></div>
+		    		<div class="p-content">
+			    		<div class="p-title">水源污染</div>
+			    		<p>養殖排遺物<br />農藥地表滲透<br />工業廢棄物排放</p>
+		    		</div>
+		    	</li>
+		    	<li>
+		    		<div class="number">2</div>
+		    		<div class="pic"><img src="images/img_03.png" alt="自來水廠" /></div>
+		    		<div class="p-content">
+			    		<div class="p-title">自來水廠</div>
+			    		<p>自來水廠<br />餘氯殘留</p>
+		    		</div>
+		    	</li>
+		    	<li>
+		    		<div class="number">3</div>
+		    		<div class="pic"><img src="images/img_04.png" alt="管線汙染" /></div>
+		    		<div class="p-content">
+			    		<div class="p-title">管線汙染</div>
+			    		<p>配水管道老舊<br />或滲裂</p>
+		    		</div>
+		    	</li>
+		    	<li>
+		    		<div class="number">4</div>
+		    		<div class="pic"><img src="images/img_05.png" alt="設備污染" /></div>
+		    		<div class="p-content">
+			    		<div class="p-title">設備污染</div>
+			    		<p>滋菌或污水回滲<br />原有淨水設備老舊</p>
+		    		</div>
+		    	</li>
+		    	<div style="clear: both;"></div>
+		    </ul>
+		</div>
+
+		<!--飲水問題-->
+		<div class="box_03">
+			<h1 class="pc-show">自來水煮沸就夠了嗎?</h1>
+		  	<h1 class="m-show">自來水煮沸<br />就夠了嗎?</h1>
+			<ul>
+		    	<li class="boiled-1">
+					<div class="boiled-title">自來水高溫煮沸</div>
+					<p>只有滅菌與除氯的效果，並無法濾除水中的鐵鏽泥沙、重金屬、有機化合物等有害物質。</p>
+				</li>
+				<li class="boiled-2">
+					<div class="boiled-title">煮沸水冷卻存放問題</div>
+					<p>若儲水容器未妥善清潔或讓水長時間曝露在空氣中未密封保存，更容易再度滋生細菌。</p>
+				</li>
+				<li class="boiled-3">
+					<div class="content">
+						<div class="boiled-title">選擇S003極淨便捷淨水器</div>
+						<p>0.5微米的孔徑濾心可過濾大部分的雜質與污染物，達生飲等級。即濾即飲，方便又健康。</p>
+					</div>
+					<figure><img src="images/pd3.png" /></figure>
+				</li>
+				<li class="boiled-note pc-show">
+					* <span>6個月</span>更換濾心，可供<span>4人以下小家庭</span>使用
+				</li>
+				<li class="boiled-note m-show">
+					* <span>6個月</span>更換濾心，<br />可供<span>4人以下小家庭</span>使用
+				</li>
+			</ul>
+		</div>
+
+		<!--高效過濾技術-->
+		<div class="box_04">
+		    <div class="content">
+				<h1>高效過濾技術</h1>
+		    	<p>高密度活性碳棒濾心，0.5微米孔徑製程，大面積吸附雜質與污染物，一支即可有效過濾去除水中餘氯、異味、重金屬、孢子囊菌及有害微生物，並留住對身體有益的礦物質，可滿足小家庭6個月的飲用水量，方便又安心。</p>
+		    	<div class="content_img">
+					<div><img src="images/img_07.png" alt="NSF雙重國際認證" /></div>
+					<div><img src="images/img_08.png" alt="SGS濾心過濾效能驗證" /></div>
+					<div><img src="images/img_09.png" /></div>
+				</div>
+		    </div>
+		    <div class="pic"><img src="images/img_06.png" /></div>
+		    <div class="name">可濾除項目</div>
+		    <ul>
+		    	<li>
+		    		<figure><img src="images/icon06.png" alt="泥沙" /></figure>
+		    		<p>泥沙</p>
+		    	</li>
+		    	<li>
+		    		<figure><img src="images/icon07.png" alt="鐵鏽" /></figure>
+		    		<p>鐵鏽</p>
+		    	</li>
+		    	<li>
+		    		<figure><img src="images/icon08.png" alt="餘氯" /></figure>
+		    		<p>餘氯</p>
+		    	</li>
+		    	<li>
+		    		<figure><img src="images/icon09.png" alt="囊胞菌" /></figure>
+		    		<p>囊胞菌</p>
+		    	</li>
+		    	<li>
+		    		<figure><img src="images/icon10.png" alt="細菌" /></figure>
+		    		<p>細菌</p>
+		    	</li>
+		    	<li>
+		    		<figure><img src="images/icon11.png" alt="部分重金屬" /></figure>
+		    		<p class="pc-show">部分<br />重金屬</p>
+		    		<p class="m-show">部分重金屬</p>
+		    	</li>
+		    	<li>
+		    		<figure><img src="images/icon12.png" alt="石棉" /></figure>
+		    		<p>石棉</p>
+		    	</li>
+		    	<li>
+		    		<figure><img src="images/icon13.png" alt="農藥" /></figure>
+		    		<p>農藥</p>
+				</li>
+				<li>
+		    		<figure><img src="images/icon14.png" alt="揮發性有機化合物" /></figure>
+		    		<p>揮發性<br />有機化合物</p>
+		    	</li>
+		    </ul>
+	    </div>
+
+		<!--即淨即飲-->
+		<div class="box_05">
+			<h1>即淨即飲，長效低負擔</h1>
+		    <div class="txt">
+		    	<p>濾心可使用半年，有2,839公升的大處理量，每分鐘出水量最大可達2.8公升，滿足小家庭、單身青年即開即飲的需求，安心便利又省錢。</p>
+		    </div>
+		    <div class="name"><span>2,839公升</span> ╱ 半年使用量</div>
+		    <ul class="compare">
+		    	<li class="compare-1">
+		    		<div class="pic">
+		    			<img src="images/img_10.png" alt="3M™ S003" />
+					</div>
+					<div class="content">
+						<div class="title"><font class="font">3M™</font> S003</div>
+						<ul class="info">
+							<li>
+								<p class="item">替換濾心</p>
+								<p class="price"><span>1,990</span>元</p>
+							</li>
+							<li>
+								<p class="item">每公升</p>
+								<p class="price"><span>0.7</span>元</p>
+							</li>
+							<li class="win"><img src="images/win.png" alt="勝" /></li>
+						</ul>
+					</div>
+		    	</li>
+		    	<li class="compare-2">
+		    		<div class="pic">
+		    			<img src="images/img_11.png" alt="850ml一般市售礦泉水" />
+		    		</div>
+		    		<div class="content">
+						<div class="title">850ml<br />一般市售礦泉水</div>
+						<ul class="info">
+							<li>
+								<p class="item">3,340瓶</p>
+								<p class="price"><span>10,200</span>元</p>
+							</li>
+							<li>
+								<p class="item">每公升</p>
+								<p class="price"><span>35.3</span>元</p>
+							</li>
+						</ul>
+						<div class="note">（以市售30元計算）</div>
+					</div>
+		    	</li>
+		    </ul>
+		</div>
+
+		<!--小體積省空間-->
+		<div class="box_06">
+		    <h1>小體積省空間</h1>
+		    <div class="txt">
+		    	<p>櫥下型單管濾心安裝不佔空間，維持檯面、廚下空間舒適整潔。</p>
+		    </div>
+		    <ul class="content">
+				<li><img src="images/img_12.png" alt="廚下不必再塞得滿滿" /></li>
+				<li><img src="images/img_13.png" alt="S003釋出更多空間" /></li>
+			</ul>
+		</div>
+
+		<!--更換濾心方便-->
+		<div class="box_07">
+		    <h1>更換濾心方便</h1>
+		    <div class="txt">
+		    	<p>採用SQC快拆式兩分路設計，<span>5秒鐘</span>免工具快速完成安裝或更換，更加衛生無汙染。</p>
+		    </div>
+		    <ul>
+				<li>
+					<img src="images/img_14.jpg" />
+					<p>將舊濾心以順時針方向旋轉，簡單卸下</p>
+				</li>
+				<li>
+					<img src="images/img_15.jpg" />
+					<p>新濾心以逆時鐘方向旋轉安裝</p>
+				</li>
+			</ul>
+		</div>
+
+		<!--過濾水的生活應用-->
+		<div class="box_08">
+		    <h1><span>過濾水的生活應用</span></h1>
+		    <ul>
+		    	<li>
+		    		<img src="images/img_16.png" alt="" />
+		    		<p>日常飲用</p>
+		    	</li>
+		    	<li>
+		    		<img src="images/img_17.png" alt="" />
+		    		<p>洗滌食材</p>
+		    	</li>
+		    	<li>
+		    		<img src="images/img_18.png" alt="" />
+		    		<p>料理烹飪</p>
+		    	</li>
+		    	<li>
+		    		<img src="images/img_19.png" alt="" />
+		    		<p>沖調飲品</p>
+		    	</li>
+		    </ul>
+		</div>
+
+		<!--淨水專家-->
+		<div class="box_09">
+		    <div class="txt">
+			    <div class="title"><font class="font">3M</font>世界級淨水專家<span>實驗室等級的居家好水</span></div>
+			    <p><font class="font">3M</font>專注淨水科技，擁有超過80年的液體過濾與淨水經驗。全球千位淨水團隊，從實驗到研發層層把關，實驗室等級的安心純淨，讓您在家也能夠擁有。</p>
+		  	</div>
+		  	<div class="over"><img src="images/over.png" alt="" /></div>
+		</div>
+
+		<!--產品規格-->
+		<div class="box_10">
+			<h1>產品規格</h1>
+			<div class="content">
+				<div class="pd"><img src="images/pd1.png"></div>
+				<ul class="list">
+					<li>
+						<div class="title">商品名稱</div>
+						<div class="txt"><font class="font">3M™</font> S003 極淨便捷系列淨水器</div>
+					</li>
+					<li>
+						<div class="title">商品型號</div>
+						<div class="txt">3US-S003-5 / 濾心：3US-F003-5</div>
+					</li>
+					<li>
+						<div class="title">總濾水量</div>
+						<div class="txt">2,839公升（750加侖）</div>
+					</li>
+					<li>
+						<div class="title">適用水源</div>
+						<div class="txt">0.5微米</div>
+					</li>
+					<li>
+						<div class="title">有效流速</div>
+						<div class="txt">每分鐘2.8公升</div>
+					</li>
+					<li>
+						<div class="title">耗材更換</div>
+						<div class="txt">活性碳濾心：6個月</div>
+					</li>
+					<li>
+						<div class="title">原產地</div>
+						<div class="txt">台灣（濾心產地：墨西哥）</div>
+					</li>
+					<li>
+						<div class="title">商品尺寸</div>
+						<div class="txt">淨水器系統：寬6 x 深6.8 x 高32.5公分</div>
+					</li>
+					<li>
+						<div class="title">商品重量</div>
+						<div class="txt">淨水器系統：450±10公克</div>
+					</li>
+					<li>
+						<div class="title">主要材質</div>
+						<div class="txt">濾心：高效能活性碳<br />濾心外殼：ABS塑料<br />快接頭座：聚丙烯（PP）</div>
+					</li>
+					<li>
+						<div class="title">適用溫度</div>
+						<div class="txt">4.4~37.8℃</div>
+					</li>
+					<li>
+						<div class="title">操作水壓</div>
+						<div class="txt">15~54 psi</div>
+					</li>
+				</ul>
+			</div>
+			<div class="name">搭配龍頭規格</div>
+			<div class="content">
+				<div class="pd"><img src="images/pd2.png"></div>
+				<ul class="list">
+					<li>
+						<div class="title">商品名稱</div>
+						<div class="txt"><font class="font">3M™</font> 鵝頸龍頭</div>
+					</li>
+					<li>
+						<div class="title">產品功能</div>
+						<div class="txt">生飲淨水出水龍頭</div>
+					</li>
+					<li>
+						<div class="title">主要材質</div>
+						<div class="txt">出水彎管：SUS304不鏽鋼<br />本體外殼(非觸水件)：銅鋅合金<br />本體內材：食品級無鉛陶瓷閥心</div>
+					</li>
+					<li>
+						<div class="title">原產地</div>
+						<div class="txt">台灣</div>
+					</li>
+				</ul>
+			</div>
+	    </div>
+	</div>
+</body>
+</html>
